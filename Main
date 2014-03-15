@@ -1,0 +1,30 @@
+mport java.net.*;
+import java.io.*;
+
+public class Project{
+  public static void main ( String[] args ) throws IOException {
+  try 
+  {  
+  URL url = new URL("http://www.google.co.in");
+  URLConnection conn = url.openConnection();
+  
+  for (int i=0; ; i++) 
+  {
+  String name = conn.getHeaderFieldKey(i);
+  String value = conn.getHeaderField(i);
+  if (name == null && value == null){
+  break; 
+  }
+  if (name == null){
+  System.out.println("Server HTTP version, Response code:");
+  System.out.println(value);
+  System.out.print("\n");
+  }
+  else{
+  System.out.println(name + "=>" + value);
+  }
+  }
+  } 
+  catch (Exception e) {}
+  }
+}
